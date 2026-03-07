@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/table';
 import { FileIcon } from 'lucide-react';
 
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import {
     Pagination,
     PaginationContent,
@@ -19,6 +19,8 @@ import {
     PaginationNext,
     PaginationPrevious,
 } from '@/components/ui/pagination';
+import { cn } from '@/lib/utils';
+import { Link } from 'react-router';
 
 type ExamHistoryTableProps = {
     data: Exam[];
@@ -28,11 +30,17 @@ const DownloadExamButton = () => {
     return <Button variant="link">Download</Button>;
 };
 
-const ViewDetailsButton = () => {
+const ViewDetailsButton = ({ examId }: { examId: string }) => {
     return (
-        <Button variant="link" className="text-muted-foreground">
+        <Link
+            to={`/app/exam/${examId}`}
+            className={cn(
+                'text-muted-foreground',
+                buttonVariants({ variant: 'link', className: 'text-muted-foreground' })
+            )}
+        >
             View Details
-        </Button>
+        </Link>
     );
 };
 
@@ -41,7 +49,7 @@ const getActionButton = (type: ExamType) => {
         case 'DICOM':
             return <DownloadExamButton />;
         case 'EXTERNAL':
-            return <ViewDetailsButton />;
+            return <ViewDetailsButton examId="ID: #PX-88231" />;
         default:
             return null;
     }
@@ -103,10 +111,10 @@ const PaginationTable = () => {
 
 export const ExamHistoryTable = ({ data }: ExamHistoryTableProps) => {
     return (
-        <div className="overflow-hidden border rounded-2xl bg-white">
-            <Table>
+        <div className="border rounded-2xl bg-white">
+            <Table className="table-fixed w-full">
                 <TableHeader className="bg-[#F8FAFC]">
-                    <TableRow className="*:text-xs *:font-bold *:text-muted-foreground *:py-4 *:px-6 ">
+                    <TableRow className="*:text-xs *:font-bold *:text-muted-foreground *:py-4 *:px-6">
                         <TableHead>Exam</TableHead>
                         <TableHead>Date</TableHead>
                         <TableHead>Status</TableHead>
@@ -125,8 +133,10 @@ export const ExamHistoryTable = ({ data }: ExamHistoryTableProps) => {
                                 <ExamStatusBadge status={exam.status} />
                             </TableCell>
 
-                            <TableCell className="flex items-center gap-2 font-semibold text-sm justify-end ">
-                                {getActionButton(exam.type)}
+                            <TableCell className="text-right">
+                                <div className="flex items-center justify-end gap-2">
+                                    {getActionButton(exam.type)}
+                                </div>
                             </TableCell>
                         </TableRow>
                     ))}
@@ -138,7 +148,7 @@ export const ExamHistoryTable = ({ data }: ExamHistoryTableProps) => {
                             Showing 1 to 5 of 1,284 patients
                         </TableCell>
 
-                        <TableCell colSpan={2}>
+                        <TableCell>
                             <PaginationTable />
                         </TableCell>
                     </TableRow>
