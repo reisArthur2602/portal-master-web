@@ -52,12 +52,12 @@ const examsMock: Exam[] = [
 ];
 
 export const Patient = () => {
-    const params = useParams();
+    const { patientId } = useParams();
 
     return (
         <main className="p-8 space-y-8">
             <PatientBreadcrumb />
-            <PatientProfile />
+            <PatientProfile patientId={patientId as string} />
             <div className="grid grid-cols-[715px_1fr] gap-8">
                 <div className="space-y-8">
                     <PersonalInformation />

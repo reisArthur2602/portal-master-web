@@ -47,7 +47,7 @@ export const Patients = () => {
 
             <main className="p-8 space-y-8">
                 <div>
-                    <h1 className="font-black">Patients Directory</h1>
+                    <h1 className='font-black'>Patients Directory</h1>
                     <p>
                         Manage all registered patient records, exam history, and medical profiles.
                     </p>

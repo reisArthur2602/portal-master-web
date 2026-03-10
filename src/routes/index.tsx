@@ -1,5 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
 import { DashboardLayout } from '../components/shared/dashboard-layout';
+import { CreateExam } from './app/create-exam';
 import { CreatePatient } from './app/create-patient';
 import { Exam } from './app/exam';
 import { Members } from './app/members';
@@ -22,6 +23,7 @@ export default function AppRouter() {
                     <Route path="patients/:patientId" element={<Patient />} />
                     <Route path="members" element={<Members />} />
                     <Route path="exam/:examId" element={<Exam />} />
+                    <Route path="create-exam/:patientId" element={<CreateExam />} />
                 </Route>
 
                 {/* FALLBACK */}
