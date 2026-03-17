@@ -1,10 +1,19 @@
-import { Heart } from "lucide-react";
+// const Icon = () => {
+//   return (
+//     <div className="bg-primary p-1 rounded-sm w-fit text-white">
+//       <Heart size={18} />
+//     </div>
+//   );
+// };
 
 const Icon = () => {
   return (
-    <div className="bg-primary p-1 rounded-sm w-fit text-white">
-      <Heart size={18} />
-    </div>
+    <img
+      src="/logo.svg"
+      alt="Logo Sistema de Exames Médicos"
+      width={32}
+      height={32}
+    />
   );
 };
 

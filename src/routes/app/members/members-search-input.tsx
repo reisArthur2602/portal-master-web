@@ -1,5 +1,5 @@
-import { Input } from '@/components/ui/input';
+import { Input } from "@/components/ui/input";
 
 export const MembersSearchInput = () => {
-    return <Input placeholder="Search members..." className="max-w-[50%]" />;
+  return <Input placeholder="Pesquisar membros..." className="max-w-[50%]" />;
 };
