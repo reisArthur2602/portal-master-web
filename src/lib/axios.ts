@@ -20,8 +20,8 @@ axiosFetcher.interceptors.response.use(
     if (error instanceof AxiosError) {
       const status = error.response?.status;
       const message = error.response?.data?.message || "Erro na requisição";
-
-      if (status === 401) {
+      const isUnauthorazed = status === 401;
+      if (isUnauthorazed) {
         await cookieStore.delete(ACCESS_TOKEN_VALUE);
         window.location.href = "/sign-in";
         return Promise.reject(error);

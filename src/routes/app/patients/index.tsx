@@ -1,6 +1,8 @@
+import { useQuery } from "@tanstack/react-query";
 import { PatientsCard } from "./patients-card";
 import { PatientsHeader } from "./patients-header";
 import { PatientsTable } from "./patients-table";
+import { listUsers } from "@/http/list-users";
 
 const patientsData: Patient[] = [
   {
